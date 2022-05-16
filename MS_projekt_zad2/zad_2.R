@@ -28,6 +28,14 @@ summary(model)
 
 
 #Z4 wykresy zależności
+plot(poland$nawoz, poland$wyd, main="wykres zaleznosci, Polska", xlab = "nawoz", ylab = "wydajnosc", col = "red")
+abline(model_poland, col = "blue")
+
+plot(hungary$nawoz, hungary$wyd, main="wykres zaleznosci, Wegry", xlab = "nawoz", ylab = "wydajnosc", col = "red")
+abline(model_hungary, col = "blue")
+
+plot(data$nawoz, data$wyd, main="wykres zaleznosci, razem", xlab = "nawoz", ylab = "wydajnosc", col = "red")
+abline(model, col = "blue")
 
 #Z5 histogramy rezyduow
 
