@@ -23,4 +23,3 @@ summary(model_hungary)
 
 model<-lm(wyd ~ nawoz, data = data)
 summary(model)
-
