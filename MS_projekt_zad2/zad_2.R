@@ -24,6 +24,11 @@ summary(model_hungary)
 model<-lm(wyd ~ nawoz, data = data)
 summary(model)
 
+#Z3 standardowy błąd szacunku
+
+
+#Z4 wykresy zależności
+
 #Z5 histogramy rezyduow
 
 poland_res<-resid(model_poland)
