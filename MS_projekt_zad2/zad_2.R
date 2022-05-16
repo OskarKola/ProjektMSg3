@@ -24,7 +24,7 @@ summary(model_hungary)
 model<-lm(wyd ~ nawoz, data = data)
 summary(model)
 
-#Z6 histogramy rezyduow
+#Z5 histogramy rezyduow
 
 poland_res<-resid(model_poland)
 hist(poland$nawoz, poland_res, ylab = "rezydua", xlab = "model regresji", 
