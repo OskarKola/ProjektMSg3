@@ -23,3 +23,30 @@ summary(model_hungary)
 
 model<-lm(wyd ~ nawoz, data = data)
 summary(model)
+
+#Z6 histogramy rezyduow
+
+poland_res<-resid(model_poland)
+hist(poland$nawoz, poland_res, ylab = "rezydua", xlab = "model regresji", 
+     main = "Histogram rezyduow, Polska")
+#abline(0,0)
+
+hungary_res<-resid(model_hungary)
+hist(hungary$nawoz, hungary_res, ylab = "rezydua", xlab = "model regresji", 
+     main = "Histogram rezyduow, Wegry")
+#abline(0,0)
+
+polstd.stdres = rstandard(model_poland)
+hunstd.stdres = rstandard(model_hungary)
+
+qqnorm(polstd.stdres, 
+             ylab="Standardized Residuals", 
+             xlab="Normal Scores", 
+             main="Poland") 
+qqline(polstd.stdres)
+
+qqnorm(hunstd.stdres, 
+       ylab="Standardized Residuals", 
+       xlab="Normal Scores", 
+       main="Hungary") 
+qqline(hunstd.stdres)
