@@ -58,27 +58,46 @@ lines(predict_all, col = "green")
 
 #Z5 histogramy rezyduow
 
-poland_res<-resid(model_poland)
-hist(poland$nawoz, poland_res, ylab = "rezydua", xlab = "model regresji", 
-     main = "Histogram rezyduow, Polska")
+#poland_res<-resid(model_poland)
+#hist(poland$nawoz, poland_res, ylab = "rezydua", xlab = "model regresji", 
+#    main = "Histogram rezyduow, Polska")
 #abline(0,0)
 
-hungary_res<-resid(model_hungary)
-hist(hungary$nawoz, hungary_res, ylab = "rezydua", xlab = "model regresji", 
-     main = "Histogram rezyduow, Wegry")
+#hungary_res<-resid(model_hungary)
+#hist(hungary$nawoz, hungary_res, ylab = "rezydua", xlab = "model regresji", 
+#     main = "Histogram rezyduow, Wegry")
 #abline(0,0)
+
+#all_res<-resid(model)
+#hist(data$nawoz, all_res, ylab = "rezydua", xlab = "model regresji", 
+#     main = "Histogram rezyduow, Razem")
+#abline(0,0)
+
+respol <-residuals(model_poland)
+hist(respol)
+reshun <- residuals(model_hungary)
+hist(reshun)
+resall <-residuals(model)
+hist(resall)
 
 polstd.stdres = rstandard(model_poland)
 hunstd.stdres = rstandard(model_hungary)
+allstd.stdres = rstandard(model)
 
 qqnorm(polstd.stdres, 
              ylab="Standardized Residuals", 
              xlab="Normal Scores", 
-             main="Poland") 
+             main="Polska") 
 qqline(polstd.stdres)
 
 qqnorm(hunstd.stdres, 
        ylab="Standardized Residuals", 
        xlab="Normal Scores", 
-       main="Hungary") 
+       main="Wegry") 
 qqline(hunstd.stdres)
+
+qqnorm(allstd.stdres, 
+       ylab="Standardized Residuals", 
+       xlab="Normal Scores", 
+       main="Razem") 
+qqline(allstd.stdres)
