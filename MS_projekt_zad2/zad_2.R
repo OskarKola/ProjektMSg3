@@ -46,25 +46,11 @@ sigma(model_poland)*100/mean(poland$wyd)
 
 #Z4 wykresy zależności
 
-
-ggplot(poland,aes(nawoz,wyd)) + geom_point() +
-geom_smooth(method = "lm", level = .95)
-plot(model_poland)
-
-predict_poland = predict(model_poland, interval = "prediction", level = 0.95)
-new_poland <- cbind(poland, predict_poland)
-
-
-ggplot(new_poland, aes(nawoz))+ geom_point(aes(y=wyd)) +
+ggplot(new_poland, aes(nawoz,wyd))+ geom_point() +
+  geom_smooth(method = "lm", level = .95) +
   geom_line(aes(y=fit), col = "blue")+
   geom_line(aes(y=upr), col = "blue", linetype = "dashed")+
   geom_line(aes(y=lwr), col = "blue", linetype = "dashed")
-
-
-
-ggplot(hungary,aes(nawoz,wyd)) + geom_point() +
-  geom_smooth(method = "lm", level = .95)
-plot(model_hungary)
 
 predict_hungary = predict(model_hungary, interval = "prediction", level = 0.95)
 new_hungary <- cbind(hungary, predict_hungary)
@@ -76,37 +62,16 @@ ggplot(new_hungary, aes(nawoz,wyd))+ geom_point() +
   geom_line(aes(y=upr), col = "blue", linetype = "dashed")+
   geom_line(aes(y=lwr), col = "blue", linetype = "dashed")
 
-
-
-ggplot(data,aes(nawoz,wyd)) + geom_point() +
-  geom_smooth(method = "lm", level = .95)
-plot(model)
-
 predict_all = predict(model, interval = "prediction", level = 0.95)
 new_all <- cbind(data, predict_all)
+view(new_all)
 
-ggplot(new_all, aes(nawoz))+ geom_point(aes(y=wyd)) +
+ggplot(new_all, aes(nawoz, wyd))+ geom_point() +
+  geom_smooth(method = "lm", level = .95) +
   geom_line(aes(y=fit), col = "blue")+
   geom_line(aes(y=upr), col = "blue", linetype = "dashed")+
   geom_line(aes(y=lwr), col = "blue", linetype = "dashed")
   
-  
-  
-  
-
-predict_hungary = predict(model_hungary)
-plot(hungary$nawoz, hungary$wyd, main="wykres zaleznosci, Wegry", xlab = "nawoz", ylab = "wydajnosc", col = "red")
-abline(model_hungary, col = "blue")
-
-
-predict_all = predict(model)
-plot(data$nawoz, data$wyd, main="wykres zaleznosci, razem", xlab = "nawoz", ylab = "wydajnosc", col = "red")
-abline(model, col = "blue")
-
-
-
-
-
 
 #Z5 histogramy rezyduow
 
