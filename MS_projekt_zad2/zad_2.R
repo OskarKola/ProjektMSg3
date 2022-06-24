@@ -46,11 +46,17 @@ sigma(model_poland)*100/mean(poland$wyd)
 
 #Z4 wykresy zależności
 
+
+predict_poland = predict(model_poland, interval = "prediction", level = 0.95)
+new_poland <- cbind(poland, predict_poland)
+view(new_poland)
+
 ggplot(new_poland, aes(nawoz,wyd))+ geom_point() +
   geom_smooth(method = "lm", level = .95) +
   geom_line(aes(y=fit), col = "blue")+
   geom_line(aes(y=upr), col = "blue", linetype = "dashed")+
   geom_line(aes(y=lwr), col = "blue", linetype = "dashed")
+
 
 predict_hungary = predict(model_hungary, interval = "prediction", level = 0.95)
 new_hungary <- cbind(hungary, predict_hungary)
@@ -62,6 +68,7 @@ ggplot(new_hungary, aes(nawoz,wyd))+ geom_point() +
   geom_line(aes(y=upr), col = "blue", linetype = "dashed")+
   geom_line(aes(y=lwr), col = "blue", linetype = "dashed")
 
+
 predict_all = predict(model, interval = "prediction", level = 0.95)
 new_all <- cbind(data, predict_all)
 view(new_all)
@@ -72,7 +79,7 @@ ggplot(new_all, aes(nawoz, wyd))+ geom_point() +
   geom_line(aes(y=upr), col = "blue", linetype = "dashed")+
   geom_line(aes(y=lwr), col = "blue", linetype = "dashed")
   
-
+  
 #Z5 histogramy rezyduow
 
 #poland_res<-resid(model_poland)
